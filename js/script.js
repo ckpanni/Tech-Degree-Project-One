@@ -35,7 +35,7 @@ const quotes = [
   {
     quote: "Believe you can and you're halfway there.",
     source: "Theodore Roosevelt",
-  },
+  }
 ]
 
 
@@ -44,11 +44,11 @@ const quotes = [
 ***/
 
 const getRandomQuote = (arr) => {
-  let randomNumber = Math.floor(Math.random() * arr.length) + 1;
+  let randomNumber = Math.floor(Math.random() * arr.length);
   return arr[randomNumber];
 }
 
-getRandomQuote(quotes);
+
 
 
 /***
@@ -56,9 +56,27 @@ getRandomQuote(quotes);
 ***/
 
 const printQuote = () => {
+  const getQuote = getRandomQuote(quotes);
+
+  
+    let htmlString = `<p class="quote">${getQuote?.quote}</p>
+                      <p class="source">${getQuote?.source}`;
+  
+     if (getQuote?.citation) {
+        htmlString += `<span class="citation">${getQuote?.citation}</span>`;
+     }
+     
+     if (getQuote?.year) {
+      htmlString += `<span class="year">${getQuote?.year}</span></p>`;
+     }
+
+  return document.getElementById('quote-box').innerHTML = htmlString; 
 
 }
 
+
+
+https://stackoverflow.com/questions/44488434/inserting-if-statement-inside-es6-template-literal
 
 
 /***
