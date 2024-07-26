@@ -76,7 +76,7 @@ const printQuote = () => {
 
 
 
-https://stackoverflow.com/questions/44488434/inserting-if-statement-inside-es6-template-literal
+
 
 
 /***
