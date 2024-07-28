@@ -1,15 +1,5 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
 
-// For assistance:
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/***
- * `quotes` array
- ***/
+//quotes array with requested key/val pairs
 
 const quotes = [
   {
@@ -23,7 +13,7 @@ const quotes = [
     source: "Antoine de Saint-Exupéry",
     citation: "The Little Prince",
     year: "1954",
-    tags: ["French Literature", "Children's Literature"],
+    tags: ["French Literature", "Philosophical"],
   },
   {
     quote: "Beware; for I am fearless, and therefore powerful.",
@@ -40,19 +30,28 @@ const quotes = [
   },
 ];
 
-/***
- * `getRandomQuote` function
- ***/
+
+//This function returns a random index from the quotes array.
 
 const getRandomQuote = (arr) => {
   const randomNumber = Math.floor(Math.random() * arr.length);
   return arr[randomNumber];
 };
 
-/***
- * `printQuote` function
- ***/
+//This function generates a random RGB value. It then sets the background color of the body to the newly generated rgb. The making of this function is inspired from a TH lesson I saw where Guil created a function similar.
 
+function randomBackground () {
+  const red = Math.floor(Math.random() * 256 );
+  const green = Math.floor(Math.random() * 256 );
+  const blue = Math.floor(Math.random() * 256 );
+
+ const rgb = `rgb(${red}, ${green}, ${blue})`;
+ return document.body.style.backgroundColor = rgb;
+
+}
+
+
+//This function begins by getting a  returns one of the objects from the quotes array. It then builds a string with the values, and returns it to the #quotes-box section within index.html. Additionally, the randomBackground
 const printQuote = () => {
   const getQuote = getRandomQuote(quotes);
 
@@ -73,8 +72,12 @@ const printQuote = () => {
 
   htmlString += "</p>";
 
+  randomBackground();
+
   return (document.getElementById("quote-box").innerHTML = htmlString);
 };
+
+setInterval(printQuote, 4000);
 
 /***
  * click event listener for the print quote button
