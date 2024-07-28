@@ -38,6 +38,7 @@ const getRandomQuote = (arr) => {
   return arr[randomNumber];
 };
 
+
 //This function generates a random RGB value. It then sets the background color of the body to the newly generated rgb. The making of this function is inspired from a TH lesson I saw where Guil created a function similar.
 
 function randomBackground () {
@@ -51,7 +52,8 @@ function randomBackground () {
 }
 
 
-//This function begins by getting a  returns one of the objects from the quotes array. It then builds a string with the values, and returns it to the #quotes-box section within index.html. Additionally, the randomBackground
+//This function begins by creating a variable getQuote that returns a random object in the quotes array. Then, I start to build an HTML string with values from getRandomQuote. I use optional chaining (?.) as a safe check for the quote and the source values. I used it because I was getting console errors. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining. I then use conditional statements to build the string if certain key/val pairs exist. I call the randomBackground function to change the background color at the same time as the quote changes. Then, I set that htmlString value to the #quoteBox div.
+
 const printQuote = () => {
   const getQuote = getRandomQuote(quotes);
 
@@ -77,11 +79,10 @@ const printQuote = () => {
   return (document.getElementById("quote-box").innerHTML = htmlString);
 };
 
-setInterval(printQuote, 4000);
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
- ***/
+//The setInterval function calls the printQuote function to be run every 8 seconds. 
+setInterval(printQuote, 8000);
+
+
 
 document.getElementById("load-quote").addEventListener("click", printQuote, false);
